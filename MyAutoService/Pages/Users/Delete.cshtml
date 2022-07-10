@@ -1,0 +1,32 @@
+﻿@page
+@model MyAutoService.Pages.Users.DeleteModel
+@{
+}
+<div class="card card-header w-50 mx-auto shadow">
+    <h4 class="text-danger">آیا از حذف کاربر '@Model.ApplicationUser.Name' مطمئن هستید ؟</h4>
+
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicationUser.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationUser.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicationUser.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationUser.Email)
+        </dd>
+
+    </dl>
+
+    <form method="post" >
+        <input type="hidden" asp-for="ApplicationUser.Id"/>
+        <input type="submit" value="حذف" class="btn btn-danger m-2"/>  
+        
+        <a asp-page="./Index" class="text-decoration-none">بازگشت به لیست</a>
+       
+    </form>
+</div>

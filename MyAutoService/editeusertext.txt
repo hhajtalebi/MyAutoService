@@ -1,0 +1,67 @@
+﻿@page
+@model MyAutoService.Pages.Users.EditeModel
+@{
+}
+
+<div class="row">
+    <div class="col-md-6 card card-group shadow-lg p-3  border-light mx-auto ">
+        <form method="post">
+            <h6 class="text-center">ثبت نام کاربر جدید</h6>
+            <hr />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ApplicationUser.Id"/>
+            <div class="form-horizontal  d-inline-block">
+                <label asp-for="ApplicationUser.Name"></label>
+                <input asp-for="ApplicationUser.Name" class="form-control m-2" autocomplete="Name" aria-required="true" />
+
+                <span asp-validation-for="ApplicationUser.Name" class="text-danger"></span>
+            </div>
+
+           
+
+            <div class="form-horizontal d-inline-block">
+                <label asp-for="ApplicationUser.PhoneNumber"></label>
+                <input asp-for="ApplicationUser.PhoneNumber" class="form-control m-2 " autocomplete="PhoneNumber" aria-required="false" />
+
+                <span asp-validation-for="ApplicationUser.PhoneNumber" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-horizontal d-inline-block">
+                <label asp-for="ApplicationUser.City"></label>
+                <input asp-for="ApplicationUser.City" class="form-control m-2" autocomplete="City" />
+
+                <span asp-validation-for="ApplicationUser.City" class="text-danger"></span>
+            </div>
+
+            <div class="form-horizontal d-inline-block">
+                <label asp-for="ApplicationUser.PostalCode"></label>
+                <input asp-for="ApplicationUser.PostalCode" class="form-control m-2 w-100" autocomplete="PostalCode" />
+
+                <span asp-validation-for="ApplicationUser.PostalCode" class="text-danger"></span>
+            </div>
+            
+            <div class="form-horizontal">
+                <label > نقش</label>
+                <select asp-for="SelectRole" asp-items="Model.Roles" class="form-control w-100"></select>
+
+                <span asp-validation-for="ApplicationUser.PostalCode" class="text-danger"></span>
+            </div>
+
+            <div class="form-horizontal">
+                <label asp-for="ApplicationUser.Address"></label>
+                <textarea asp-for="ApplicationUser.Address" class="form-control m-2 " autocomplete="Address"></textarea>
+
+                <span asp-validation-for="ApplicationUser.Address" class="text-danger"></span>
+            </div>
+
+
+            <button id="registerSubmit" type="submit" class="w-50 btn  btn-primary">ویرایش کاربر</button>
+            <a class="text-info text-decoration-none text-start" asp-page="Index"> برگشت به صفحه قبل</a>
+        </form>
+    </div>
+</div>
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
+

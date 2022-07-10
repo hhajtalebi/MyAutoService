@@ -1,0 +1,38 @@
+﻿@page
+@using MyAutoService.Utility
+@model MyAutoService.Pages.ServicTypes.DetailsModel
+
+@{
+    ViewData["Title"] = "جزئیات";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-12">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <h4>جزئیات سرویس @Model.ServicType.Name</h4>
+        <hr/>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ServicType.Name)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ServicType.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ServicType.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Model.ServicType.Price.ToToman();
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="Edite" class="text-decoration-none" asp-route-id="@Model.ServicType.Id">ویرایش</a> |
+        <a asp-page="./Index" class="text-decoration-none">برگشت به لیست</a>
+    </div>
+    <div class="col-3"></div>
+
+</div>
+

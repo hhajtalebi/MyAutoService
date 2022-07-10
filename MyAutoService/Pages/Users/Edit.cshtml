@@ -1,0 +1,94 @@
+﻿@page
+@model MyAutoService.Pages.Users.EditModel
+@{
+}
+<br />
+<div class="card card-body mx-auto w-75 shadow">
+    <div class="shadow border card-header m-3">
+        <h3 class="text-info text-center">
+              <i class="fas fa-user-edit text-start"></i>   
+            ویرایش کاربر '@Model.ApplicationUser.Name'
+        </h3>
+        
+        <hr/>
+    </div>
+    <form method="post" class="shadow">
+        <input type="hidden" asp-for="ApplicationUser.Id"/>
+        <div class="border p-3">
+            <div class="form-group row">
+                <div class="col-2 text-end m-1">
+                    نام :
+                </div>
+                <div class="col-5 m-1">
+                    <input asp-for="ApplicationUser.Name" class="form-control"/>
+                    <span asp-validation-for="ApplicationUser.Name"></span>
+                </div>
+
+            </div>
+            <div class="form-group row">
+                <div class="col-2 text-end m-1">
+                    شهر :
+                </div>
+                <div class="col-5 m-1">
+                    <input asp-for="ApplicationUser.City" class="form-control"/>
+                    <span asp-validation-for="ApplicationUser.City"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 text-end m-1">
+                    تلفن :
+                </div>
+                <div class="col-5 m-1">
+                    <input asp-for="ApplicationUser.PhoneNumber" class="form-control"/>
+                    <span asp-validation-for="ApplicationUser.PhoneNumber"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 text-end m-1">
+                    کد پستی :
+                </div>
+                <div class="col-5 m-1">
+                    <input asp-for="ApplicationUser.PostalCode" class="form-control"/>
+                    <span asp-validation-for="ApplicationUser.PostalCode"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 text-end m-1">
+                    ادرس :
+                </div>
+                <div class="col-5 m-1">
+                    <textarea asp-for="ApplicationUser.Address" class="form-control">
+                </textarea>
+                    <span asp-validation-for="ApplicationUser.Address"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-2 text-end m-1">
+                    نقش :
+                </div>
+                <div class="col-5 m-1">
+                    <select asp-for="SelectedRole" asp-items="Model.Roles" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group row col-12 m-2">
+               
+                <div class="col-11 offset-2">
+                    <div class="row">
+                        <div class="col-5">
+                            <input type="submit" class="btn btn-info form-control" value="ویرایش"/>
+                        </div>
+                        <div class="col-5">
+                            <a asp-page="Index" class="btn btn-outline-success form-control">بازگشت به لیست</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    @section Scripts
+    {
+        <partial name="_ValidationScriptsPartial"/>
+    }
+
+</div>

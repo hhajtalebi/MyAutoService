@@ -1,0 +1,36 @@
+﻿@page
+@using MyAutoService.Utility
+@model MyAutoService.Pages.ServicTypes.DeleteModel
+
+@{
+    ViewData["Title"] = "حذف";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="col-12">
+    <h5 class="text-danger">  آیا از حذف سرویس  <span class="text-info text-decoration-none">@Model.ServicType.Name</span>  مطمئن هستید ؟</h5>
+
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ServicType.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ServicType.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ServicType.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ServicType.Price.ToToman();
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="ServicType.Id" />
+        <input type="submit" value="حذف" class="btn btn-danger text-decoration-none" /> |
+        <a asp-page="./Index" class="text-decoration-none">برگشت به لیست</a>
+    </form>
+</div>

@@ -1,0 +1,80 @@
+﻿@page
+@model MyAutoService.Pages.Cars.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>ویرایش ماشین</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Car.Id" />
+            <input type="hidden" asp-for="Car.ImageName" />
+            <input type="hidden" asp-for="Car.UserID" />
+            <div class="form-group">
+                <label asp-for="Car.Name" class="control-label"></label>
+                <input asp-for="Car.Name" class="form-control" />
+                <span asp-validation-for="Car.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Model" class="control-label"></label>
+                <input asp-for="Car.Model" class="form-control" />
+                <span asp-validation-for="Car.Model" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.color" class="control-label"></label>
+                <input asp-for="Car.color" class="form-control" />
+                <span asp-validation-for="Car.color" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.Year" class="control-label"></label>
+                <input asp-for="Car.Year" class="form-control" />
+                <span asp-validation-for="Car.Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Car.ImageName" class="control-label"></label>
+                <input type="file" name="ImgUp" id="ImgUp" />
+                <span asp-validation-for="Car.ImageName" class="text-danger"></span>
+                <img id="imgPreview" src="/CarImages/@Model.Car.ImageName" style="max-width: 200px" class="img-thumbnail" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="به روز رسانی" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">بازگشت به لیست</a>
+</div>
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('#imgPreview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+    }
+
+    $("#ImgUp").change(function() {
+        readURL(this);
+    });
+</script>
+}
+

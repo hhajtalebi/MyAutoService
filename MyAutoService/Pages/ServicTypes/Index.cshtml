@@ -1,0 +1,90 @@
+﻿@page
+@using MyAutoService.Utility
+@model MyAutoService.Pages.ServicTypes.IndexModel
+@{
+}
+<h3 class="text-info text-center"> مدیریت خدمات اتوسرویس</h3>
+<hr />
+<div class="border shadow">
+    <div class="row p-3">
+        <div class="col-3">
+            <h4 class="text-info">لیست سرویس های ما</h4>
+        </div>
+        <div class="col-6 ">
+            <form>
+                <div class="row">
+                    <input class="w-100h-100 form-control" type="text" name="NameServic" placeholder="حستحو در نام سرویس" />
+                </div>
+            </form>
+        </div>
+        <div class="col-3 text-decoration-none text-end">
+            <a asp-page="Create" class="btn btn-info">
+                افزودن سرویس جدید
+                <i class="fas fa-plus fa-xl align-content-md-end"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="shadow">
+    @if (Model.ServicListViewModel.ServiceTypeslist.Count == 0)
+    {
+        <div class="alert alert-warning">
+            سرویسی جهت نمایش تعریف نشده است شما می توانید از طریق
+            <a asp-page="Create" class="btn btn-link text-decoration-none">
+                افزودن سرویس جدید
+
+            </a>
+            سرویس جدید را ایجاد کنید.
+        </div>
+    }
+    else
+    {
+        <table class="table table-striped border">
+            <tr class="table-success">
+                <th>عنوان سرویس</th>
+                <th>قیمت سرویس</th>
+                <th></th>
+            </tr>
+            @foreach (var Item in Model.ServicListViewModel.ServiceTypeslist)
+            {
+                <tr>
+                    <td>@Item.Name</td>
+                    <td>@Item.Price.ToToman()</td>
+                    <td style="width: 150px">
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-outline-primary text-break" asp-page="Edite" asp-route-Id="@Item.Id">
+                                <i class="fas fa-edit fa-sm"></i>
+
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-outline-primary text-info" asp-page="Details" asp-route-Id="@Item.Id">
+                                <i class="fas fa-list-alt fa-sm"></i>
+
+                            </a>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <a class="btn btn-outline-primary text-danger" asp-page="Delete" asp-route-Id="@Item.Id">
+                                <i class="fas fa-delete-left fa-sm"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="5" class="text-start">
+                    <div page-model="@Model.ServicListViewModel.Pageing"
+                     page-action="Index"
+                     page-class="btn border "
+                     page-class-normal="btn btn-light"
+                     page-class-selected="btn btn-info active" class="btn-group"></div>
+                </td>
+            </tr>
+
+        </table>
+    }
+
+</div>
+

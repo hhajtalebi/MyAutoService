@@ -1,0 +1,52 @@
+﻿@page
+@model MyAutoService.Pages.Users.DetaileModel
+@{
+}
+<div class="card card-header w-50 mx-auto shadow">
+    <h4 class="text-center">جزئیات سرویس @Model.ApplicationUser.Name</h4>
+    <br />
+    <div class="col-12 row">
+        <dl class="row">
+            <dt class="col-2 text-end">
+                @Html.DisplayNameFor(Model=>Model.ApplicationUser.Name)
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayFor(Model=>Model.ApplicationUser.Name)
+            </dd>
+        
+            <dt class="col-2 text-end">
+                @Html.DisplayNameFor(Model=>Model.ApplicationUser.City)
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayFor(Model=>Model.ApplicationUser.City)
+            </dd>
+        
+            <dt class="col-2 text-end">
+                @Html.DisplayNameFor(Model=>Model.ApplicationUser.PhoneNumber) :
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayFor(Model=>Model.ApplicationUser.PhoneNumber)
+            </dd>
+            
+            <dt class="col-2 text-end">
+               @Html.DisplayNameFor(Model=>Model.ApplicationUser.Email) :
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayFor(Model=>Model.ApplicationUser.Email)
+            </dd>
+            
+            <dt class="col-2 text-end">
+                @Html.DisplayNameFor(Model=>Model.ApplicationUser.Address)
+            </dt>
+            <dd class="col-10">
+                @Html.DisplayFor(Model=>Model.ApplicationUser.Address)
+            </dd>
+
+        </dl>
+        
+        <div class="col-12 row">
+            <a asp-page="Edit" asp-route-id="@Model.ApplicationUser.Id" class="btn btn-outline-warning col-5 m-3"> ویرایش کاربر</a>
+            <a asp-page="Index" class="btn btn-outline-info col-5 m-3 ">بازگشت به صفحه قبل</a>
+        </div>
+    </div>
+</div>

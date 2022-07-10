@@ -1,0 +1,61 @@
+﻿@page
+@model MyAutoService.Pages.ServicTypes.EditeModel
+
+@{
+    ViewData["Title"] = "ویرایش سرویس";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<br/>
+<div class="text-info ">
+    <i class="fas fa-server"></i>
+    ویرایش سرویس @Model.ServicType.Name;
+</div>
+<hr/>
+<form method="post">
+    <div class="border p-2">
+        <input type="hidden" asp-for="ServicType.Id"/>
+        <div class="form-floating row m-1">
+            <div class="col-2 text-end p-2">
+                عنوان سرویس:
+            </div>
+            <div class="col-6 p-2">
+                <input asp-for="ServicType.Name" class="form-control"/>
+                <span asp-validation-for="ServicType.Name"></span>
+            </div>
+        </div>
+
+        <div class="form-floating row m-1">
+            <div class="col-2 text-end p-2">
+                قیمت سرویس:
+            </div>
+            <div class="col-6 p-2">
+                <input type="number" asp-for="ServicType.Price" class="form-control"/>
+                <span asp-validation-for="ServicType.Price"></span>
+            </div>
+        </div>
+
+        <div class="form-floating row m-2">
+            <div class="col-6 offset-2">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="submit" value="به روز رسانی" class="btn btn-success form-control p-1"/>
+
+                    </div>
+                    <div class="col-1"></div>
+                    <div class="col-5  border p-1">
+                        <a asp-page="/servicTypes/Index" class="text-info text-decoration-none ">برگشت به لیست سرویس ها</a>
+                        <i class="fas fa-rotate-backward text-info"></i>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+</form>
+@section Scripts
+{
+    <partial name="Shared/_ValidationScriptsPartial"/>
+}
+
